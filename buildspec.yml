@@ -10,15 +10,15 @@ phases:
   build:
     commands:
       - echo build Docker image on `date`
-      - docker build -t g2-aws-ecr-codepipeline .
-      - docker tag g2-aws-ecr-codepipeline:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/g2-aws-ecr-codepipeline:latest
+      - docker build -t group02-1 .
+      - docker tag group02-1:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/group02-1:latest
   post_build:
     commands:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
-      - docker push 962804699607.dkr.ecr.us-west-2.amazonaws.com/g2-aws-ecr-codepipeline:latest
+      - docker push 962804699607.dkr.ecr.us-west-2.amazonaws.com/group02-1:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"g2-aws-ecr-codepipeline","imageUri":"962804699607.dkr.ecr.us-west-2.amazonaws.com/g2-aws-ecr-codepipeline:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"group02-1","imageUri":"962804699607.dkr.ecr.us-west-2.amazonaws.com/group02-1:latest"}]' > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
 
